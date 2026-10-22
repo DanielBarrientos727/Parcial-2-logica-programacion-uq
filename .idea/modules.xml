@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Parcial-2-logica-programacion-uq.iml" filepath="$PROJECT_DIR$/.idea/Parcial-2-logica-programacion-uq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Parcial2/Parcial2.iml" filepath="$PROJECT_DIR$/Parcial2/Parcial2.iml" />
+    </modules>
+  </component>
+</project>
