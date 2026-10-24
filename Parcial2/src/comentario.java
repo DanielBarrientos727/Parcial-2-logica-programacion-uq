@@ -36,6 +36,8 @@ public class comentario {
                 
 """);
 
+        //esto para ejemplo
+
         /*
          * Reglas de implementación:
          *
