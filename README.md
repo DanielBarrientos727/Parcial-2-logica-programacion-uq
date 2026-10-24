@@ -18,6 +18,12 @@ Los requerimientos funcionales son:
 - **Proyección de ventas:** calcular una proyección con un incremento del 10 % sobre el total registrado.
 - **Clasificación de la jornada:** evaluar los resultados mediante decisiones anidadas.
 
+## Vista del código
+
+A continuación, se muestra una captura del código fuente desarrollado para el parcial.
+
+![Código fuente del Parcial II](Imagenes/codigo.png)
+
 ## Criterios de evaluación
 
 La clasificación de la jornada depende del total vendido y del promedio por pedido.
@@ -53,44 +59,40 @@ Estas reglas buscan reforzar el pensamiento algorítmico, la descomposición de 
 ## Estructura del repositorio
 
 ```text
-.
-├── src/
-│   └── Main.java
-├── docs/
-│   └── Parcial_II.pdf
+Parcial-2-logica-programacion-uq/
+├── Imagenes/
+│   └── codigo.png
+├── out/
+├── Parcial2/
+├── LICENSE
 └── README.md
 ```
 
-- `src/Main.java`: código fuente de la aplicación.
-- `docs/Parcial_II.pdf`: enunciado original de la evaluación.
-- `README.md`: documentación del proyecto.
+- `Imagenes/codigo.png`: captura del código fuente del proyecto.
+- `Parcial2/`: directorio del proyecto Java.
+- `out/`: directorio destinado a los archivos compilados, si corresponde.
+- `LICENSE`: archivo con los términos de licencia del repositorio.
+- `README.md`: documentación principal del proyecto.
 
 ## Instalación y ejecución
 
 ### Requisitos previos
 
-Tener instalado un JDK 17 o superior y disponer de Git para clonar el repositorio.
+- Tener instalado un JDK 17 o superior.
+- Disponer de Git para clonar el repositorio.
 
 ### 1. Clonar el repositorio
 
 ```bash
 git clone <URL_DEL_REPOSITORIO>
-cd <NOMBRE_DEL_REPOSITORIO>
+cd Parcial-2-logica-programacion-uq
 ```
 
-Reemplaza los valores entre los signos `< >` por la URL y el nombre reales del repositorio.
+Reemplaza `<URL_DEL_REPOSITORIO>` por la dirección real del repositorio.
 
-### 2. Compilar el programa
+### 2. Compilar y ejecutar
 
-```bash
-javac -d out src/Main.java
-```
-
-### 3. Ejecutar la aplicación
-
-```bash
-java -cp out Main
-```
+Los comandos dependen de la ubicación de los archivos `.java` y de la clase que contiene el método `main`. Una vez identificadas esas rutas, se pueden configurar los comandos de compilación y ejecución correspondientes.
 
 ## Resultados de aprendizaje
 
@@ -101,11 +103,11 @@ El ejercicio permite poner en práctica los siguientes resultados de aprendizaje
 
 ## Autoría
 
-**Estudiante(s):** integrantes del equipo de desarrollo.  
-**Programa académico:** Ingeniería de Sistemas y Computación.  
-**Institución:** Universidad del Quindío.  
-**Asignatura:** Lógica de Programación.  
-**Evaluación:** Parcial II — 22 de octubre de 2026.
+- **Estudiante(s):** integrantes del equipo de desarrollo.
+- **Programa académico:** Ingeniería de Sistemas y Computación.
+- **Institución:** Universidad del Quindío.
+- **Asignatura:** Lógica de Programación.
+- **Evaluación:** Parcial II — 22 de octubre de 2026.
 
 ---
 
