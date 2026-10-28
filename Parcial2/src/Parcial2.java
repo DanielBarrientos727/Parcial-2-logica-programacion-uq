@@ -1,4 +1,35 @@
 public class Parcial2 {
+    //https://www.netec.com/que-es-una-clase-en-java
+    // camelCase: https://keepcoding.io/blog/camelcase-que-es-como-funciona-y-beneficios/
+
+    // =========================================================================================================================
+
+    /*====================================================================
+    Hecho por Daniel Alejandro Barrientos Soto y Kevin Andres Santa Monroy
+
+    UNIVERSIDAD DEL QUINDÍO - INGENIERÍA DE SISTEMAS Y COMPUTACIÓN JORNADA NOCTURNA GRUPO 02N
+     =======================================================================================*/
+
+    // =========================================================================================================================
+
+    /*
+    Constantes del problema, que vienen del parcial: mayúsculas para constantes siempre, y minúsculas para variables siempre.
+    1) La meta se queda fija: $500.000.
+    2) Se debe de calcular el incremento del 10 % y sumarlo al total de ventas.
+    3) Se clasificar las ventas según la meta y el promedio por pedido.
+    4) Toca mostrar los resultados y la proyección de las ventas.
+     */
+    // =========================================================================================================================
+
+
+    // =========================================================================================================================
+
+    /*
+            LAS CONSTANTES DEL PARCIAL -> almacenan DE UNA valores
+     */
+
+    // =========================================================================================================================
+
     public static final double META = 500000; // Es la meta fija de ventas.
     public static final double PORCENTAJE_INCREMENTO = 0.10; // Incremento proyectado del 10%.
     public static final double PROMEDIO_ALTO = 100000; // es ya el promedio mínimo para que ventas de alto promedio -> como una puerta.
@@ -6,7 +37,13 @@ public class Parcial2 {
         ejecutarPrograma(); // Inicia la ejecución del programa Parcial2.
     }
 
-    // Se ejecutan los métodos del programa.
+    // =========================================================================================================================
+
+
+    // EJECUCIÓN MÉTODOS
+
+
+    // =========================================================================================================================
 
     public static void ejecutarPrograma() {
         int cantidadPedidos = solicitarCantidadPedidos(); //(1): Es la cantidad de pedidos registrados.
@@ -17,7 +54,14 @@ public class Parcial2 {
         double ventasProyectadas = calcularVentasProyectadas(totalVentas, incrementoVentas); //(6): Es el total proyectado.
         String resultadoJornada = calcularResultadoJornada(totalVentas, promedioVentas); //(7): Es la clasificación de la jornada/turno.
 
-        //Mostrar los datos a pantalla.
+        //Llama a los System.out.println(""); a esta parte
+
+
+        // =========================================================================================================================
+
+        /*
+                                   TRAE A LA PANTALLA USUARIO LOS RESULTADOS FINALES
+         */
 
         mostrarResultados(
                 cantidadPedidos, totalVentas, promedioVentas,
@@ -25,65 +69,80 @@ public class Parcial2 {
         );
     }
 
+    // =========================================================================================================================
+
+
+    // =========================================================================================================================
+
 /*
-                                    Declaración de métodos
+                                   DECLARACIÓN DE MÉTODOS
 */
+    // =========================================================================================================================
+
 
     // Se va a solicitar al usuario la cantidad de pedidos
     public static int solicitarCantidadPedidos() {
         int cantidadPedidos = Reutilizacion.ingresarEnteroMayorQue("Ingrese la cantidad de pedidos: ", 0);
         return cantidadPedidos;
     }
+    // =========================================================================================================================
 
-    // Sólo va a tomar el valor de todos los pedidos.
+    //Solo va a tomar el valor de todos los pedidos.
 
     public static double calcularTotalVentas(int cantidadPedidos) {
         double totalVentas = 0; // Acumulador.
 
-        // Condición, contador e incremento.
-        for (int contarPedidos = 0; contarPedidos < cantidadPedidos; contarPedidos++) {
+        // =========================================================================================================================
+
+        // SIEMPRE DEBE DE TENER CONTADOR CONDICION Y EL INCREMENTO
+
+        for (int contarPedidos = 1;
+             contarPedidos <= cantidadPedidos;
+             contarPedidos++) {
             double valorPedido = Reutilizacion.ingresarRealMayorQue("Ingrese el valor del pedido: ", 0);
             totalVentas = totalVentas + valorPedido;
         }
         return totalVentas;
     }
+    // =========================================================================================================================
 
     // Va a calcular el promedio por pedido.
     public static double calcularPromedioVentas(double totalVentas, int cantidadPedidos) {
         double promedioVentas = totalVentas / cantidadPedidos;
         return promedioVentas;
     }
+    // =========================================================================================================================
+
     // Y este calcula el porcentaje de cumplimiento de la meta.
     public static double calcularCumplimientoVentas(double totalVentas) {
         double cumplimientoVentas = (totalVentas / META) * 100;
         return cumplimientoVentas;
     }
+    // =========================================================================================================================
+
     // Esto solo va a calcular el incremento del 10 %.
     public static double calcularIncrementoVentas(double totalVentas) {
         double incrementoVentas = totalVentas * PORCENTAJE_INCREMENTO;
         return incrementoVentas;
     }
+    // =========================================================================================================================
+
     // Va a calcular el total proyectado de ventas.
     public static double calcularVentasProyectadas(double totalVentas, double incrementoVentas) {
         double ventasProyectadas = totalVentas + incrementoVentas;
         return ventasProyectadas;
     }
+    // =========================================================================================================================
+
+    /*
+           ESTA ES LA PARTE ANIDADA https://www.tutorialesprogramacionya.com/javaya/detalleconcepto.php?punto=90&codigo=170&inicio=80
+         */
+
     // Clasifica la jornada según las ventas y el promedio.
     public static String calcularResultadoJornada(double totalVentas, double promedioVentas) {
         String resultadoJornada;
 
-
-
-        /*
-
-           ESTA ES LA PARTE ANIDADA
-
-
-
-         */
-
-
-        //Imprime y lo rompe
+        //Imprime y lo rompe usamos la constante META
         if (totalVentas >= META) {
             if (promedioVentas >= PROMEDIO_ALTO) {
                 resultadoJornada = "Ventas con alto promedio por pedido";
@@ -96,10 +155,11 @@ public class Parcial2 {
         return resultadoJornada;
     }
 
+    // =========================================================================================================================
+
     // Ahora bien, esto muestra los resultados de la jornada.
     public static void mostrarResultados(
             int cantidadPedidos, double totalVentas, double promedioVentas, double cumplimientoVentas, double incrementoVentas, double ventasProyectadas, String resultadoJornada) {
-
         System.out.println("Cantidad de pedidos: " + cantidadPedidos);
         System.out.println("Total de ventas: $" + totalVentas); //Peso colombiano
         System.out.println("Promedio por pedido: $" + promedioVentas); //Peso colombiano
@@ -107,6 +167,32 @@ public class Parcial2 {
         System.out.println("Incremento del 10 %: $" + incrementoVentas); //Peso colombiano
         System.out.println("Ventas proyectadas: $" + ventasProyectadas); //Peso colombiano
         System.out.println("Resultado de la jornada: " + resultadoJornada);
-    }
 
+        // =========================================================================================================================
+        /*
+                                                           fin
+         */
+        // =========================================================================================================================
+
+        //Lo siento por todos mis pecados.
+        //Lo siento por nacer.
+        //Lo siento por existir.
+        //Lo siento por dañar.
+        //Lo siento por molestar
+        //Lo siento por olvidar.
+        //Lo siento por mi fealdad.
+        //Lo siento por mi idiotez.
+        //Lo siento por mi insensibilidad
+        //Lo siento por ser un cáncer.
+        //Chao, chao. No me verás.
+        //Soy como el humor, estuve aquí.
+        //Como el humo, me iré.
+        //Espero... que sea lindo.
+        //Ya que el humor, nace en un infierno de brasas.
+        //Y ya odio estar allí.
+        //Me ando muriendo, en alma.
+        //Fue un gusto.
+        //Lo siento.
+
+    }
 }
