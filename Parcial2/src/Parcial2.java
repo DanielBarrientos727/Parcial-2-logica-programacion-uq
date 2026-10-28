@@ -1,115 +1,110 @@
 public class Parcial2 {
-    // Constantes del problema, vienen del parcial: mayúsculas para constantes siempre, y minúsculas para variables siempre.
-    public static final double META = 500000; // Tenemos como una meta de ventas, literalmente, comienza en 500.000.
-    public static final double PORCENTAJE_INCREMENTO = 0.10; // La tienda busca desea como estimar lo que pasaria si se presenta un incremento del 10%, toca buscar como hacer eso
-    public static final double PROMEDIO_ALTO = 100000; //En el dado caso que las ventas de la tienda supere los 500.000 o sea igual a este, se debera calcular si el promedio de los pedidos superan los 100.000 o no
-
+    public static final double META = 500000; // Es la meta fija de ventas.
+    public static final double PORCENTAJE_INCREMENTO = 0.10; // Incremento proyectado del 10%.
+    public static final double PROMEDIO_ALTO = 100000; // es ya el promedio mínimo para que ventas de alto promedio -> como una puerta.
     public static void main(String[] args) {
-
-        //METODOS -> tarea especifica que realiza un programa
-        ejecutarPrograma();
+        ejecutarPrograma(); // Inicia la ejecución del programa Parcial2.
     }
 
-    public static void ejecutarPrograma() {
-        int cantidadPedidos = solicitarCantidadPedidos(); //obvio, int ya que no hay pérdidos con décimales
-        //cantidadPedidos guardará los perdidos
+    // Se ejecutan los métodos del programa.
 
-        // ACA ponemos las llamadas a los metodos, cada método varia segun lo que se requiera a usar, abajo abajo colocamos lo que ellas ejecutaran
-        double totalVentas = calcularTotalVentas(cantidadPedidos); //Pues se da como resultados el valor total de las ventas
-        double promedioVentas = calcularPromedioVentas(totalVentas, cantidadPedidos); //se dividen entre si esas variables, y nos dará un valor que segun el dato, varia
-        double cumplimientoVentas = calcularCumplimientoVentas(totalVentas); //Se evalua si se cumplio lo que pidio el enunciado
-        double incrementoVentas = calcularIncrementoVentas(totalVentas); //Se incremento luego del ejercicio del 10%
-        double ventasProyectadas = calcularVentasProyectadas(totalVentas, incrementoVentas); //se suma el total con el imprementoVentas y dara un resultado
-        String resultadoJornada = calcularResultadoJornada(totalVentas, promedioVentas);  // nos dice si es bajo o alto el promedio, o Alto promedio en ventas o Bajas. EN TEXTO
+    public static void ejecutarPrograma() {
+        int cantidadPedidos = solicitarCantidadPedidos(); //(1): Es la cantidad de pedidos registrados.
+        double totalVentas = calcularTotalVentas(cantidadPedidos); //(2): Es el total de ventas.
+        double promedioVentas = calcularPromedioVentas(totalVentas, cantidadPedidos); //(3): Es el promedio por pedido.
+        double cumplimientoVentas = calcularCumplimientoVentas(totalVentas); //(4): Es el porcentaje de cumplimiento.
+        double incrementoVentas = calcularIncrementoVentas(totalVentas); //(5): El incrementa del 10 %.
+        double ventasProyectadas = calcularVentasProyectadas(totalVentas, incrementoVentas); //(6): Es el total proyectado.
+        String resultadoJornada = calcularResultadoJornada(totalVentas, promedioVentas); //(7): Es la clasificación de la jornada/turno.
+
+        //Mostrar los datos a pantalla.
+
         mostrarResultados(
                 cantidadPedidos, totalVentas, promedioVentas,
                 cumplimientoVentas, incrementoVentas, ventasProyectadas, resultadoJornada
         );
     }
 
-  /*
-                Declaración de metodos
-     */
+/*
+                                    Declaración de métodos
+*/
 
-    // aca se va a solicitar la cantidad de pedidos
+    // Se va a solicitar al usuario la cantidad de pedidos
     public static int solicitarCantidadPedidos() {
-        int cantidadPedidos = Reutilizacion.ingresarEnteroMayorQue(
-                "Ingrese la cantidad de pedidos por favor: ", 0
-        ); //debe de tener valor minimo
-        return cantidadPedidos; //PARCIAL DICE QUE TODO CON RETURN
+        int cantidadPedidos = Reutilizacion.ingresarEnteroMayorQue("Ingrese la cantidad de pedidos: ", 0);
+        return cantidadPedidos;
     }
 
-    // Suma el valor de todos los pedidos
+    // Sólo va a tomar el valor de todos los pedidos.
+
     public static double calcularTotalVentas(int cantidadPedidos) {
-        double totalVentas = 0; //Acumulador
+        double totalVentas = 0; // Acumulador.
 
-        //for inicia desde el 0 mismo
-        for (int contarpedidos = 0; contarpedidos < cantidadPedidos; contarpedidos++) {
-            double valorPedido = Reutilizacion.ingresarRealMayorQue("Por favor señor usuario, coloque el valor del pedido: ", 0); //precio perdido mayor a 0 SIEMPRE
-            totalVentas = totalVentas + valorPedido; // totalventas inicia en 0 y se va sumando las ganancias de los perdidos
+        // Condición, contador e incremento.
+        for (int contarPedidos = 0; contarPedidos < cantidadPedidos; contarPedidos++) {
+            double valorPedido = Reutilizacion.ingresarRealMayorQue("Ingrese el valor del pedido: ", 0);
+            totalVentas = totalVentas + valorPedido;
         }
-
         return totalVentas;
     }
 
-    // Calcula el promedio de ventas por cada perdido
-
+    // Va a calcular el promedio por pedido.
     public static double calcularPromedioVentas(double totalVentas, int cantidadPedidos) {
         double promedioVentas = totalVentas / cantidadPedidos;
         return promedioVentas;
     }
-
-    // Calcula el porcentaje de cumplimiento de la meta (Constante es)
+    // Y este calcula el porcentaje de cumplimiento de la meta.
     public static double calcularCumplimientoVentas(double totalVentas) {
         double cumplimientoVentas = (totalVentas / META) * 100;
         return cumplimientoVentas;
     }
-
-    // Este metodo va calcular el incremento del 10 % sobre las ventas
+    // Esto solo va a calcular el incremento del 10 %.
     public static double calcularIncrementoVentas(double totalVentas) {
-        double incrementoVentas = totalVentas * PORCENTAJE_INCREMENTO; //CONSTANTE
-        return incrementoVentas; //Da el valor
+        double incrementoVentas = totalVentas * PORCENTAJE_INCREMENTO;
+        return incrementoVentas;
     }
-
-    // Esto va a calcular el total proyectado con el incremento
+    // Va a calcular el total proyectado de ventas.
     public static double calcularVentasProyectadas(double totalVentas, double incrementoVentas) {
         double ventasProyectadas = totalVentas + incrementoVentas;
         return ventasProyectadas;
     }
-
-    // Ahora usamos un if para lograr según el total de ventas, diferir el mensaje al señor usuario del programa este
+    // Clasifica la jornada según las ventas y el promedio.
     public static String calcularResultadoJornada(double totalVentas, double promedioVentas) {
         String resultadoJornada;
 
-        //si es mayor a 500.000 entrar al if, caso general y por a su vez usamos la constante de la meta y del promedio obvio
+        /*
+
+           ESTA ES LA PARTE ANIDADA
+
+
+
+         */
+
+
+        //Imprime y lo rompe
         if (totalVentas >= META) {
             if (promedioVentas >= PROMEDIO_ALTO) {
-                resultadoJornada = "Ventas con alto promedio por pedido"; //si es mayor tanto las ventas superiores a 500.000 y el promedio de cada perdido es mayora 100.000, sale el primer System.out.println
+                resultadoJornada = "Ventas con alto promedio por pedido";
             } else {
-                resultadoJornada = "Ventas con bajo promedio por pedido"; //A lo contrario sale esto, en cualquier caso que no sea una de las dos, pero debe de ser mayor a 500.000 las ventas
+                resultadoJornada = "Ventas con bajo promedio por pedido";
             }
         } else {
-            resultadoJornada = "Ventas por debajo de la meta"; //Si no entra aca, al final
+            resultadoJornada = "Ventas por debajo de la meta";
         }
         return resultadoJornada;
     }
 
-    // Finalmente solo imprimiremos todo los modulos hechos
+    // Ahora bien, esto muestra los resultados de la jornada.
     public static void mostrarResultados(
-            int cantidadPedidos,
-            double totalVentas,
-            double promedioVentas,
-            double cumplimientoVentas,
-            double incrementoVentas,
-            double ventasProyectadas,
-            String resultadoJornada) {
+            int cantidadPedidos, double totalVentas, double promedioVentas, double cumplimientoVentas, double incrementoVentas, double ventasProyectadas, String resultadoJornada) {
 
-        System.out.println("La cantidad de pedidos es: " + cantidadPedidos);
-        System.out.println("La total de las ventas son: $" + totalVentas);
-        System.out.println("El promedio por pedido es de: $" + promedioVentas);
+        System.out.println("Cantidad de pedidos: " + cantidadPedidos);
+        System.out.println("Total de ventas: $" + totalVentas); //Peso colombiano
+        System.out.println("Promedio por pedido: $" + promedioVentas); //Peso colombiano
         System.out.println("Cumplimiento de la meta: " + cumplimientoVentas + "%");
-        System.out.println("El incremento del 10% es: $" + incrementoVentas);
-        System.out.println("Las ventas proyectadas serán: $" + ventasProyectadas);
-        System.out.println("El resultado de la jornada es: " + resultadoJornada);
+        System.out.println("Incremento del 10 %: $" + incrementoVentas); //Peso colombiano
+        System.out.println("Ventas proyectadas: $" + ventasProyectadas); //Peso colombiano
+        System.out.println("Resultado de la jornada: " + resultadoJornada);
     }
-  }
+
+}
