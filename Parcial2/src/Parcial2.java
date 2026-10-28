@@ -72,6 +72,8 @@ public class Parcial2 {
     public static String calcularResultadoJornada(double totalVentas, double promedioVentas) {
         String resultadoJornada;
 
+
+
         /*
 
            ESTA ES LA PARTE ANIDADA
